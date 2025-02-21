@@ -1,0 +1,19 @@
+# Dependency directories
+node_modules/
+
+# Wrangler specific
+.wrangler/
+
+# Environment variables
+.env
+.dev.vars
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific files
+.DS_Store
+Thumbs.db
