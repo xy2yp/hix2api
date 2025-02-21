@@ -4,3 +4,6 @@ compatibility_date = "2023-01-01"
 
 [triggers]
 crons = []
+
+[vars]
+API_KEY = "sk-CRAZY-THURSDAY-VME50" # 请在Cloudflare Dashboard中配置此环境变量以设置实际的API密钥

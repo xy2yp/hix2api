@@ -1,13 +1,7 @@
 # HIX.AI API Proxy
 
 这是一个基于Cloudflare Worker的HIX.AI API代理服务，它将HIX.AI的API转换为OpenAI兼容的API格式。
-
-## 功能特点
-
-- 支持OpenAI API格式的请求
-- 支持流式输出
-- 支持多个HIX.AI模型
-- 支持匿名用户登录
+请在部署前修改wrangler.toml中的API密钥为你自己所需的密钥。
 
 ## 部署说明
 
@@ -45,9 +39,3 @@ curl https://your-worker.workers.dev/v1/chat/completions \
     "stream": true
   }'
 ```
-
-## 注意事项
-
-- 需要设置有效的API密钥
-- 确保Cloudflare Workers的配置正确
-- 建议在生产环境中使用HTTPS

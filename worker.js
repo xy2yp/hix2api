@@ -1,5 +1,4 @@
 // pipe.js
-const API_KEY = 'Bearer sk-phantasia';
 const CHAT_ID_REGEX = /Chat ID:\s*([a-zA-Z0-9_-]+)/;
 
 const SUB_PIPES = [
@@ -273,7 +272,7 @@ class Pipe {
                 yield `data: ${JSON.stringify(chunk)}\n\n`;
               }
             }
-            // 处理普通内容
+            // 处理普通内容 
             else if (data.content) {
               if (isThinking) {
                 // 发送思考结束标记
@@ -381,7 +380,8 @@ export default {
     if (url.pathname === '/v1/models' && request.method === 'GET') {
       // Verify Authorization header
       const authHeader = request.headers.get('Authorization');
-      if (!authHeader || !authHeader.startsWith('Bearer ') || authHeader !== API_KEY) {
+      const apiKey = `Bearer ${env.API_KEY}`;
+    if (!authHeader || !authHeader.startsWith('Bearer ') || authHeader !== apiKey) {
         return new Response(JSON.stringify({
           error: {
             message: "Invalid API key provided",
@@ -434,7 +434,8 @@ export default {
 
     // 验证 Authorization 头
     const authHeader = request.headers.get('Authorization');
-    if (!authHeader || !authHeader.startsWith('Bearer ') || authHeader !== API_KEY) {
+    const apiKey = `Bearer ${env.API_KEY}`;
+    if (!authHeader || !authHeader.startsWith('Bearer ') || authHeader !== apiKey) {
       return new Response(JSON.stringify({
         error: {
           message: "Invalid API key provided",
@@ -545,7 +546,7 @@ export default {
           let isThinking = false;
           let thinkContent = '';
 
-          // 收集完整响应
+          // 收集完整响应 
           for await (const chunk of pipe.chatStream(chatId, question)) {
             if (!chunk.startsWith('data: ')) continue;
             if (chunk === 'data: [DONE]\n\n') continue;
